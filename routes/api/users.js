@@ -71,7 +71,6 @@ const { errors, isValid } = validateRegisterInput(req.body);
                     id: user.id,
                     name: user.name
                 };
-
     // Sign token
             jwt.sign(
                 payload,
