@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypts");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
+// Load User model
+const User = require("../../models/User");
+
 
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
-const validateLoginInput = require("../../validation/register");
-
-// Load User model
-const User = require("../..models/User");
+const validateLoginInput = require("../../validation/login");
 
 router.post("/register", (req, res) => {
 
@@ -33,7 +33,7 @@ const { errors, isValid } = validateRegisterInput(req.body);
 
  // Hash password before saving in database
         bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(newUSer.password, salt, (err, hash) => {
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
                 if (err) throw err;
                 newUser.password = hash;
                 newUser
@@ -46,7 +46,7 @@ const { errors, isValid } = validateRegisterInput(req.body);
      });
   });
 
-  router.post("/login", (req, res) => {
+router.post("/login", (req, res) => {
     // Form validation 
     const { errors, isValid } = validateLoginInput(req.body);
 
@@ -88,11 +88,10 @@ const { errors, isValid } = validateRegisterInput(req.body);
       } else {
           return res
           .status(400)
-          .json({ passwordincorrect: "Password incorrect"
-});
+          .json({ passwordincorrect: "Password incorrect"});
         }
      });
    });
-});
+  });
 
-module.exports = router
+module.exports = router;
