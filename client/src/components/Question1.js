@@ -21,7 +21,31 @@ const Question1 = () => {
           <h1 key={question.id}>{question.question1}</h1>
         )))}
       </div>
-      <div>
+          <form>
+            <div>
+            <label>
+              <input type="radio" value="strongly_agree" onChange={handleAnswerChange} checked={answer === 'strongly_agree'}/>
+              Strongly Agree
+            </label>
+            </div>
+            <div>
+            <label>
+              <input type="radio" value="agree" onChange={handleAnswerChange} checked={answer === 'agree'}/>
+              Agree
+            </label>
+            </div>
+            <div>
+            <label>
+              <input type="radio" value="disagree" onChange={handleAnswerChange} checked={answer === 'disagree'}/>
+              Disagree
+            </label>
+            </div>
+            <label>
+              <input type="radio" value="strongly_disagree" onChange={handleAnswerChange} checked={answer === 'strongly_disagree'}/>
+              Strongly Disagree
+            </label>
+            </form>
+      {/* <div>
         <input
           type="radio"
           value="strongly_agree"
@@ -72,7 +96,7 @@ const Question1 = () => {
         >
           Strongly Disagree
         </label>
-      </div>
+      </div> */}
       <button
         className="next_button"
         type="button"
