@@ -52,7 +52,7 @@ export const setUserLoading = () => {
     };
 };
 // Log user out
-export const logoutUser = () => {
+export const logoutUser = () => dispatch => {
     localStorage.removeItem("jwtToken");
     setAuthToken(false);
     dispatch(setCurrentUser({}));
