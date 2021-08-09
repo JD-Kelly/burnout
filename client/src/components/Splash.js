@@ -9,7 +9,7 @@ const Splash = () => {
 
   return (
     <div>
-      <h1>splash</h1>
+      <h1>burnout</h1>
       <button type="button" onClick={nextQuestionHandler}>
         next
       </button>
