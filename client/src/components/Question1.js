@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { questions } from './Questions';
 
 const Question1 = () => {
+  const [result, setResult] = useState([]);
   const [answer, setAnswer] = useState('');
   const history = useHistory();
   const nextQuestionHandler = () => {
@@ -12,6 +13,16 @@ const Question1 = () => {
 
   const handleAnswerChange = (event) => {
     setAnswer(event.target.value);
+    const answer = event.target.value
+    if ( answer === "strongly_agree" ) {
+      setResult(1)
+    } else if ( answer === "agree" ) {
+      setResult(2)
+    } else if ( answer === "disagree" ) {
+      setResult(3)
+    } else {
+      setResult(4)
+    }
   };
 
   return (
@@ -80,7 +91,14 @@ const Question1 = () => {
       >
         next
       </button>
-      {answer}
+      <div>
+        {/* to be removed */}
+          Answer {answer}
+          <div>
+        {/* to be removed */}
+          Result {result}
+          </div>
+      </div>
     </div>
   );
 };
